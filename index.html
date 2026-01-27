@@ -146,13 +146,13 @@ for (let i=0;i<25;i++){
 <div id="heartbeat">❤️</div>
 
 <div class="card">
-  <p>I made this just for you — because you deserve something made with love.</p>
+  <p>I made this just for you because you deserve something made with love.</p>
   <button onclick="playMusic()">Play Our Song 🎶</button>
 </div>
 
 <!-- LOVE LETTER -->
 <div class="card">
-  <h2 style="color:#e75480;">💌 Open When You Click</h2>
+  <h2 style="color:#e75480;">💌💌💌 </h2>
   <button onclick="toggleLetter()">Open Letter</button>
   <p id="typingText" style="margin-top:15px;line-height:1.8;"></p>
 </div>
@@ -160,9 +160,9 @@ for (let i=0;i<25;i++){
 <!-- SECRET VALENTINE SURPRISE -->
 <div class="card" id="secretCard">
   <h2 style="color:#e75480;">🔒 Secret Surprise</h2>
-  <button onclick="revealValentine()">Tap to Unlock</button>
+  <button onclick="revealValentine()">Tap to Unlock Surprise</button>
   <p id="secretMessage" class="hidden" style="margin-top:15px;">
-    🌹 Click to see your Valentine surprise 🌹
+    Don’t overthink it... click here 😌
   </p>
 </div>
 
@@ -170,8 +170,10 @@ for (let i=0;i<25;i++){
 <div class="card">
   <h2 style="color:#e75480;">Our Memories 💞</h2>
   <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
+    <img src="photo1.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo3.jpeg">
+    <img src="photo4.jpeg">
     <video src="video1.mp4" controls></video>
   </div>
 </div>
@@ -191,12 +193,13 @@ function playMusic(){
 // TYPING LOVE LETTER
 const message = `My love,
 
-You have the kind of heart that makes everything feel warm and safe.
-Every moment with you means more to me than I can ever explain.
+Being with you just feels right. 
+You have this way of making everything calmer and better without even trying. 
+The more time I spend with you, the more I realize how much you truly mean to me.
 
-You are my favorite person, my peace, my happiness.
+You’re my favorite person, my peace, and the one who always puts a smile on my face even when you don’t know you’re doing it.
 
-I love you ❤️`;
+I love you.`;
 
 let index = 0;
 function toggleLetter(){
@@ -219,7 +222,7 @@ function revealValentine(){
   const secretMessage = document.getElementById("secretMessage");
 
   secretMessage.classList.remove("hidden");
-  secretMessage.innerHTML = "🌹 Click again for your Valentine surprise 🌹";
+  secretMessage.innerHTML = "Don’t overthink it... click here ";
 
   secretMessage.onclick = ()=>{
     // Hide everything else
@@ -229,7 +232,7 @@ function revealValentine(){
     // Show final Valentine
     const final = document.createElement("div");
     final.id="finalValentine";
-    final.innerHTML="💖 Will you be my Valentine? 💖";
+    final.innerHTML=" Congrats!! You’ve been successfully trapped 😌💌 Now tell me… will you be my Valentine? ";
     document.body.appendChild(final);
   };
 }
@@ -253,4 +256,5 @@ function createHeart(x,y){
 
 </body>
 </html>
+
 
