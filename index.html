@@ -9,48 +9,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-/* GENERAL */
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  background: linear-gradient(to bottom, #ffe6f0, #fff);
-  font-family: 'Poppins', sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:linear-gradient(to bottom,#ffe6f0,#fff);
+  font-family:'Poppins',sans-serif;
   text-align:center;
   padding:25px;
   overflow-x:hidden;
 }
 
 /* ROSE PETALS */
-.petal {
-  position: fixed;
-  top: -50px;
+.petal{
+  position:fixed;
+  top:-50px;
   font-size:24px;
-  animation: fall linear infinite;
-  opacity:0.8;
+  animation:fall linear infinite;
+  opacity:.8;
 }
-@keyframes fall {
-  0% { transform: translateY(-50px) rotate(0deg);}
-  100% { transform: translateY(110vh) rotate(360deg);}
+@keyframes fall{
+  0%{transform:translateY(-50px) rotate(0);}
+  100%{transform:translateY(110vh) rotate(360deg);}
 }
 
 /* HEARTBEAT */
-#heartbeat {
+#heartbeat{
   font-size:70px;
   margin:25px auto;
   animation:beat 1s infinite;
-  filter: drop-shadow(0 0 12px #ff6b9c);
+  filter:drop-shadow(0 0 12px #ff6b9c);
 }
-@keyframes beat {
-  0%   { transform: scale(1); }
-  25%  { transform: scale(1.25); }
-  40%  { transform: scale(1); }
-  60%  { transform: scale(1.2); }
-  100% { transform: scale(1); }
+@keyframes beat{
+  0%{transform:scale(1);}
+  25%{transform:scale(1.25);}
+  40%{transform:scale(1);}
+  60%{transform:scale(1.2);}
+  100%{transform:scale(1);}
 }
 
 /* GENERAL LAYOUT */
-h1 { font-family: 'Great Vibes', cursive; font-size:48px; color:#e75480; }
-.subtitle { color:#666; margin-bottom:20px; }
-.card {
+h1{font-family:'Great Vibes',cursive;font-size:48px;color:#e75480;}
+.subtitle{color:#666;margin-bottom:20px;}
+.card{
   background:white;
   border-radius:25px;
   padding:25px;
@@ -58,7 +57,7 @@ h1 { font-family: 'Great Vibes', cursive; font-size:48px; color:#e75480; }
   max-width:600px;
   box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
-button {
+button{
   padding:12px 30px;
   border-radius:30px;
   border:none;
@@ -68,56 +67,69 @@ button {
   cursor:pointer;
   margin-top:15px;
 }
-button:hover { background:#d6456d; }
-.hidden { display:none; }
+button:hover{background:#d6456d;}
+.hidden{display:none;}
 
 /* GALLERY */
-.gallery img, .gallery video {
-  width:100%;
-  max-width:260px;
-  border-radius:18px;
-  margin:10px;
-}
+.gallery img{width:100%;max-width:260px;border-radius:18px;margin:10px;}
 
 /* HEART TRAIL */
-.heart-trail {
+.heart-trail{
   position:fixed;
   font-size:18px;
   pointer-events:none;
   animation:floatUp 1s ease-out forwards;
 }
-@keyframes floatUp {
-  0% {opacity:1; transform: translateY(0) scale(1);}
-  100% {opacity:0; transform: translateY(-40px) scale(1.6);}
+@keyframes floatUp{
+  0%{opacity:1;transform:translateY(0) scale(1);}
+  100%{opacity:0;transform:translateY(-40px) scale(1.6);}
 }
 
-/* FINAL VALENTINE MESSAGE */
-#finalValentine {
+/* FINAL VIDEO BACKGROUND */
+#finalScreen{
   position:fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  font-size:60px;
-  color:#e75480;
-  text-align:center;
-  font-family:'Great Vibes', cursive;
+  inset:0;
   z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+#finalScreen video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(60%);
+}
+
+#finalText{
+  position:relative;
+  font-family:'Great Vibes',cursive;
+  font-size:64px;
+  color:#fff;
+  text-align:center;
   opacity:0;
-  animation: fadeScale 2s forwards, glowPulse 2s infinite alternate;
+  transform:scale(.6);
+  animation:fadeScale 2s forwards, glow 2s infinite alternate;
+  z-index:2;
+  padding:20px;
 }
-@keyframes fadeScale {
-  to { opacity:1; transform: translate(-50%, -50%) scale(1); }
+
+@keyframes fadeScale{
+  to{opacity:1;transform:scale(1);}
 }
-@keyframes glowPulse {
-  0% { text-shadow: 0 0 10px #ff6b9c, 0 0 20px #ff6b9c, 0 0 30px #ff6b9c; }
-  50% { text-shadow: 0 0 20px #ff6b9c, 0 0 40px #ff6b9c, 0 0 60px #ff6b9c; }
-  100% { text-shadow: 0 0 10px #ff6b9c, 0 0 20px #ff6b9c, 0 0 30px #ff6b9c; }
+@keyframes glow{
+  from{text-shadow:0 0 15px #ff9acb;}
+  to{text-shadow:0 0 40px #ff9acb;}
 }
 
 /* MOBILE */
 @media(max-width:600px){
-  h1 { font-size:42px; }
-  .card { padding:20px; }
+  #finalText{font-size:48px;}
+  h1{font-size:42px;}
+  .card{padding:20px;}
 }
 </style>
 </head>
@@ -129,14 +141,14 @@ button:hover { background:#d6456d; }
 
 <!-- ROSE PETALS SCRIPT -->
 <script>
-for (let i=0;i<25;i++){
-  const petal=document.createElement("div");
-  petal.className="petal";
-  petal.innerHTML="🌹";
-  petal.style.left=Math.random()*100+"vw";
-  petal.style.animationDuration=(5+Math.random()*5)+"s";
-  petal.style.fontSize=(18+Math.random()*20)+"px";
-  document.body.appendChild(petal);
+for(let i=0;i<25;i++){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerHTML="🌹";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(5+Math.random()*5)+"s";
+  p.style.fontSize=(18+Math.random()*20)+"px";
+  document.body.appendChild(p);
 }
 </script>
 
@@ -152,7 +164,7 @@ for (let i=0;i<25;i++){
 
 <!-- LOVE LETTER -->
 <div class="card">
-  <h2 style="color:#e75480;">💌💌💌 </h2>
+  <h2 style="color:#e75480;">💌💌💌</h2>
   <button onclick="toggleLetter()">Open Letter</button>
   <p id="typingText" style="margin-top:15px;line-height:1.8;"></p>
 </div>
@@ -161,9 +173,7 @@ for (let i=0;i<25;i++){
 <div class="card" id="secretCard">
   <h2 style="color:#e75480;">🔒 Secret Surprise</h2>
   <button onclick="revealValentine()">Tap to Unlock Surprise</button>
-  <p id="secretMessage" class="hidden" style="margin-top:15px;">
-    Don’t overthink it... click here 😌
-  </p>
+  <p id="secretMessage" class="hidden" style="margin-top:15px;">Don’t overthink it... click here 😌</p>
 </div>
 
 <!-- MEMORIES -->
@@ -174,24 +184,20 @@ for (let i=0;i<25;i++){
     <img src="photo2.jpeg">
     <img src="photo3.jpeg">
     <img src="photo4.jpeg">
-    <video src="video1.mp4.mov" controls></video>
   </div>
 </div>
 
 <script>
 // MUSIC + HEARTBEAT
-const music = document.getElementById("music");
-const heart = document.getElementById("heartbeat");
-
+const music=document.getElementById("music");
+const heart=document.getElementById("heartbeat");
 function playMusic(){
   music.play();
-  setInterval(()=>{
-    heart.style.animationDuration = 850 + Math.sin(music.currentTime*2)*150 + "ms";
-  },300);
+  setInterval(()=>{heart.style.animationDuration=850+Math.sin(music.currentTime*2)*150+"ms";},300);
 }
 
 // TYPING LOVE LETTER
-const message = `My love,
+const message=`My love,
 
 Being with you just feels right. 
 You have this way of making everything calmer and better without even trying. 
@@ -201,16 +207,16 @@ You’re my favorite person, my peace, and the one who always puts a smile on my
 
 I love you.`;
 
-let index = 0;
+let index=0;
 function toggleLetter(){
   index=0;
   document.getElementById("typingText").innerHTML="";
   typeMessage();
 }
 function typeMessage(){
-  const el = document.getElementById("typingText");
+  const el=document.getElementById("typingText");
   if(index<message.length){
-    el.innerHTML += message.charAt(index);
+    el.innerHTML+=message.charAt(index);
     index++;
     setTimeout(typeMessage,45);
   }
@@ -218,21 +224,24 @@ function typeMessage(){
 
 // SECRET VALENTINE REVEAL
 function revealValentine(){
-  const secretCard = document.getElementById("secretCard");
-  const secretMessage = document.getElementById("secretMessage");
+  const secretCard=document.getElementById("secretCard");
+  const secretMessage=document.getElementById("secretMessage");
 
   secretMessage.classList.remove("hidden");
-  secretMessage.innerHTML = "Don’t overthink it... click here ";
+  secretMessage.innerHTML="Don’t overthink it... click here 😌";
 
-  secretMessage.onclick = ()=>{
+  secretMessage.onclick=()=>{
     // Hide everything else
     document.body.querySelectorAll(".card,h1,.subtitle,#heartbeat,.gallery").forEach(el=>el.style.display="none");
     document.querySelectorAll(".petal").forEach(el=>el.style.display="none");
 
-    // Show final Valentine
-    const final = document.createElement("div");
-    final.id="finalValentine";
-    final.innerHTML=" Congrats!! You’ve been successfully trapped 😌💌 Now tell me… will you be my Valentine? ";
+    // Show final Valentine with video background
+    const final=document.createElement("div");
+    final.id="finalScreen";
+    final.innerHTML=`
+      <video src="valentine-video.mp4" autoplay loop muted></video>
+      <div id="finalText"> Will you be my Valentine? </div>
+    `;
     document.body.appendChild(final);
   };
 }
@@ -240,22 +249,21 @@ function revealValentine(){
 // HEART TRAIL
 document.addEventListener("click",e=>createHeart(e.clientX,e.clientY));
 document.addEventListener("touchstart",e=>{
-  const t = e.touches[0];
+  const t=e.touches[0];
   createHeart(t.clientX,t.clientY);
 });
 function createHeart(x,y){
-  const heart = document.createElement("div");
-  heart.className="heart-trail";
-  heart.innerHTML="💖";
-  heart.style.left=x+"px";
-  heart.style.top=y+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),1000);
+  const h=document.createElement("div");
+  h.className="heart-trail";
+  h.innerHTML="💖";
+  h.style.left=x+"px";
+  h.style.top=y+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),1000);
 }
 </script>
 
 </body>
 </html>
-
 
 
