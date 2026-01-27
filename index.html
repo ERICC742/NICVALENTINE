@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,17 +111,19 @@ button:hover{background:#d6456d;}
   text-align:center;
   opacity:0;
   transform:scale(.6);
-  animation:fadeScale 2s forwards, glow 2s infinite alternate;
   z-index:2;
   padding:20px;
+  animation:fadeScale 2s forwards, glow 2s infinite alternate;
 }
 
 @keyframes fadeScale{
-  to{opacity:1;transform:scale(1);}
+  0%{opacity:0; transform:scale(0.6);}
+  100%{opacity:1; transform:scale(1);}
 }
 @keyframes glow{
-  from{text-shadow:0 0 15px #ff9acb;}
-  to{text-shadow:0 0 40px #ff9acb;}
+  0%{text-shadow:0 0 15px #ff9acb;}
+  50%{text-shadow:0 0 40px #ff9acb;}
+  100%{text-shadow:0 0 15px #ff9acb;}
 }
 
 /* MOBILE */
@@ -172,7 +173,7 @@ for(let i=0;i<25;i++){
 <!-- SECRET VALENTINE SURPRISE -->
 <div class="card" id="secretCard">
   <h2 style="color:#e75480;">🔒 Secret Surprise</h2>
-  <button onclick="revealValentine()">Tap to Unlock Surprise</button>
+  <button onclick="revealValentine()">Click Last</button>
   <p id="secretMessage" class="hidden" style="margin-top:15px;">Don’t overthink it... click here 😌</p>
 </div>
 
@@ -230,16 +231,16 @@ function revealValentine(){
   secretMessage.classList.remove("hidden");
   secretMessage.innerHTML="Don’t overthink it... click here 😌";
 
-  secretMessage.onclick=()=>{
+  secretMessage.onclick = () => {
     // Hide everything else
     document.body.querySelectorAll(".card,h1,.subtitle,#heartbeat,.gallery").forEach(el=>el.style.display="none");
     document.querySelectorAll(".petal").forEach(el=>el.style.display="none");
 
     // Show final Valentine with video background
-    const final=document.createElement("div");
-    final.id="finalScreen";
-    final.innerHTML=`
-      <video src="video1.mp4.mov" autoplay loop muted></video>
+    const final = document.createElement("div");
+    final.id = "finalScreen";
+    final.innerHTML = `
+      <video src="valentine-video.mp4" autoplay loop muted></video>
       <div id="finalText"> Will you be my Valentine? </div>
     `;
     document.body.appendChild(final);
@@ -265,6 +266,4 @@ function createHeart(x,y){
 
 </body>
 </html>
-
-
 
