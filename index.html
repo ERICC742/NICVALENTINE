@@ -95,14 +95,6 @@ button:hover{background:#d6456d;}
   flex-direction:column;
 }
 
-#finalScreen video{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(60%);
-}
-
 #finalText{
   position:relative;
   font-family:'Great Vibes',cursive;
@@ -172,9 +164,9 @@ for(let i=0;i<25;i++){
 
 <!-- SECRET VALENTINE SURPRISE -->
 <div class="card" id="secretCard">
-  <h2 style="color:#e75480;">🔒 Secret Surprise</h2>
-  <button onclick="revealValentine()">Click Last</button>
-  <p id="secretMessage" class="hidden" style="margin-top:15px;">Don’t overthink it... click here 😌</p>
+  <h2 style="color:#e75480;">🔒 Final Surprise</h2>
+  <button onclick="revealValentine()">Don't overthink it... click here</button>
+  <p id="secretMessage" class="hidden" style="margin-top:15px;"> Will you be my Valentine? </p>
 </div>
 
 <!-- MEMORIES -->
@@ -237,13 +229,30 @@ function revealValentine(){
     document.querySelectorAll(".petal").forEach(el=>el.style.display="none");
 
     // Show final Valentine with video background
-    const final = document.createElement("div");
-    final.id = "finalScreen";
-    final.innerHTML = `
-      <video src="video1.mp4.mov" autoplay loop muted></video>
-      <div id="finalText"> Will you be my Valentine? </div>
-    `;
-    document.body.appendChild(final);
+    const finalScreen = document.createElement("div");
+    finalScreen.id = "finalScreen";
+
+    // Create video element
+    const video = document.createElement("video");
+    video.src = "video1.mp4.mov";
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.style.position = "absolute";
+    video.style.width = "100%";
+    video.style.height = "100%";
+    video.style.objectFit = "cover";
+    video.style.filter = "brightness(60%)";
+
+    // Create final text
+    const finalText = document.createElement("div");
+    finalText.id = "finalText";
+    finalText.innerHTML = " Will you be my Valentine? ";
+
+    finalScreen.appendChild(video);
+    finalScreen.appendChild(finalText);
+    document.body.appendChild(finalScreen);
   };
 }
 
@@ -266,6 +275,8 @@ function createHeart(x,y){
 
 </body>
 </html>
+
+
 
 
 
